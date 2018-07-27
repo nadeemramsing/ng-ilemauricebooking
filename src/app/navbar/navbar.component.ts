@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  //binded variables
+  // binded variables
   isNavbarOpen: boolean = false;
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
   
-  //services goes here
+  // services goes here
   constructor(private breakpointObserver: BreakpointObserver) { }
   
-  //binded methods
+  // binded methods
   toggle() {
     this.isNavbarOpen = !this.isNavbarOpen;
   }
