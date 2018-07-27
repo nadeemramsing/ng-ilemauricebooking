@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular6-material-starter": {
+    "ng-ilemauricebooking": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular6-material-starter",
+            "outputPath": "dist/ng-ilemauricebooking",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -53,18 +53,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular6-material-starter:build"
+            "browserTarget": "ng-ilemauricebooking:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular6-material-starter:build:production"
+              "browserTarget": "ng-ilemauricebooking:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular6-material-starter:build"
+            "browserTarget": "ng-ilemauricebooking:build"
           }
         },
         "test": {
@@ -101,7 +101,7 @@
         }
       }
     },
-    "angular6-material-starter-e2e": {
+    "ng-ilemauricebooking-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -109,7 +109,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular6-material-starter:serve"
+            "devServerTarget": "ng-ilemauricebooking:serve"
           }
         },
         "lint": {
@@ -124,5 +124,5 @@
       }
     }
   },
-  "defaultProject": "angular6-material-starter"
+  "defaultProject": "ng-ilemauricebooking"
 }
