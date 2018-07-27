@@ -1,0 +1,30 @@
+@import '../custom-styles/navbar-style.scss';
+@import '../custom-styles/global-variables.scss';
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+mat-sidenav-content{
+  margin-left: 0 !important;
+  position: fixed;
+  font-family: 'roboto-light' !important;
+  width: 100% !important;
+  height: max-content !important;
+}
+mat-sidenav{
+  margin-top: 64px !important;
+  font-family: 'roboto-light' !important;
+  @media screen and (max-width: 600px) {
+    margin-top: 56px !important;
+  }
+}
+mat-toolbar{
+  background-color: $primary-color !important;
+  font-family: 'roboto-light' !important;
+}
