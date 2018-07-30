@@ -5,9 +5,9 @@ import { MaterialModule } from './modules/material-module';
 import { COMMON_COMPONENTS } from './components/export';
 
 @NgModule({
-  /* imports: [
+  imports: [
     MaterialModule
-  ], */
+  ],
   declarations: [
     ...COMMON_COMPONENTS
   ],
