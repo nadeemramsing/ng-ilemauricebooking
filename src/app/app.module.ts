@@ -8,9 +8,9 @@ import { MaterialModule } from './material-module';
 
 // components
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MaterialTableComponent } from './material-table/material-table.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MaterialTableComponent } from './pages/material-table/material-table.component';
+import { NavbarComponent } from './common/components/navbar/navbar.component';
 
 // routing
 import { routes } from './/routing.module';
