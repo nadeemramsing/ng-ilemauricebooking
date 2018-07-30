@@ -3,13 +3,13 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'navbar-component',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'sidenav-component',
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.scss']
 })
-export class NavbarComponent {
+export class SidenavComponent {
   // binded variables
-  isNavbarOpen: boolean = false;
+  isSidenavOpen: boolean = false;
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
   
   // services goes here
@@ -17,9 +17,7 @@ export class NavbarComponent {
   
   // binded methods
   toggle() {
-    this.isNavbarOpen = !this.isNavbarOpen;
+    this.isSidenavOpen = !this.isSidenavOpen;
   }
-
-
 
 }
