@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // user-defined
-import { CommonModule } from './common/common.module';
 import { PagesModule } from './pages/pages.module';
 
 // components
