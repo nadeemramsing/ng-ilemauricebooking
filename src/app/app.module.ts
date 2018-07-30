@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 
 // user-defined
 import { CommonModule } from './common/common.module';
-import { MaterialModule } from './material-module';
 import { PagesModule } from './pages/pages.module';
 
 // components
@@ -27,8 +26,6 @@ import { routes } from './app-routing.module';
     RouterModule.forRoot(routes, { useHash: true }),
     
     // user-defined
-    CommonModule,
-    MaterialModule,
     PagesModule,
   ],
   providers: [],
