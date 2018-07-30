@@ -4,17 +4,17 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 
 @NgModule({
     exports: [
-        MatToolbarModule,
         MatButtonModule,
-        MatSidenavModule,
+        MatCardModule,
+        MatGridListModule,
         MatIconModule,
         MatListModule,
-        MatGridListModule,
-        MatCardModule,
         MatMenuModule,
-        MatTableModule,
         MatPaginatorModule,
+        MatSidenavModule,
         MatSortModule,
+        MatTableModule,
+        MatToolbarModule,
     ]
 })
 export class MaterialModule { }
