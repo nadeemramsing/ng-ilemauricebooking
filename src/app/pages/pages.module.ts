@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 
-//Modules
-import { PagesRoutingModule, PAGES_COMPONENTS } from './pages-routing.module';
+// Modules
+// General
 import { CommonModules } from '../common/common.module';
+// Specific
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+
+// Components
+import { PagesRoutingModule, PAGES_COMPONENTS } from './pages-routing.module';
 
 @NgModule({
   imports: [
     CommonModules,
+    NgxPageScrollModule,
     PagesRoutingModule
   ],
   declarations: [
