@@ -1,7 +1,6 @@
 // modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -21,7 +20,6 @@ import { routes } from './app-routing.module';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    LayoutModule,
     RouterModule.forRoot(routes, { useHash: true }),
     
     // user-defined

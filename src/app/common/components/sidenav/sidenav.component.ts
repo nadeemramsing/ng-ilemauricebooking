@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,12 +7,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  // binded variables
   isSidenavOpen: boolean = false;
-  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
   
-  // services goes here
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor() { }
   
   // binded methods
   toggle() {

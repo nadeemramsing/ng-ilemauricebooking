@@ -11,4 +11,4 @@ import {
         MatMenuModule
     ]
 })
-export class MaterialModule { }
+export class CommonMaterialModule { }
