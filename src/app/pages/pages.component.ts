@@ -31,8 +31,6 @@ export class PagesComponent implements OnInit, AfterViewInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
-    setTimeout(() => this.scroll({ url: '/navbar-container' }), 400);
-
     this.router.events.subscribe(event => event['changeRoute'] && this.onRouteChange(event));
   }
 

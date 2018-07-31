@@ -7,4 +7,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent { }
+export class AppComponent {
+  constructor(){
+    history.scrollRestoration = 'manual';
+  }
+}
