@@ -12,7 +12,8 @@
         "@schematics/angular:component": {
           "changeDetection": "OnPush",
           "prefix": "app",
-          "spec": false
+          "spec": false,
+          "styleext":"scss"
         }
       },
       "architect": {
