@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   constructor(
+    private router: Router
   ) { }
 
   ngOnInit() { }
+
+  navigate(url) {
+    (<Subject<any>>this.router.events).next({ 'changeRoute': true, url });
+  }
 }

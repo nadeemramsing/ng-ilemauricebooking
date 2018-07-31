@@ -34,7 +34,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.activatedRoute.url.subscribe(() => this.onUrlChange());
-    this.router.events.subscribe(event => event instanceof NavigationEnd && this.onRouteChange(event));
+    this.router.events.subscribe(event => event['changeRoute'] && this.onRouteChange(event));
   }
 
   // LISTENERS
