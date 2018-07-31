@@ -15,7 +15,7 @@ import { MENU_ITEMS } from './pages-menu';
 })
 
 export class PagesComponent implements OnInit, AfterViewInit {
-  menu = MENU_ITEMS;
+  public menu = MENU_ITEMS;
 
   constructor(
     @Inject(DOCUMENT) private document,
@@ -27,29 +27,24 @@ export class PagesComponent implements OnInit, AfterViewInit {
     PageScrollConfig.defaultDuration = 400;
   }
 
+  // LIFECYCLE HOOKS
   ngOnInit() { }
 
   ngAfterViewInit() {
-    this.activatedRoute.url.subscribe(() => this.onUrlChange());
+    setTimeout(() => this.scroll({ url: '/navbar-container' }), 400);
+
     this.router.events.subscribe(event => event['changeRoute'] && this.onRouteChange(event));
   }
 
   // LISTENERS
-  onUrlChange() {
-    setTimeout(() => this.scrollController(this.router.routerState.snapshot), 1000);
-  }
-
   onRouteChange(event) {
-    this.scrollController(event);
-  }
-
-  scrollController({ url }) {
-    const scrollTo = '#' + _.last(url.split('/'));
-    this.scroll(scrollTo);
+    this.scroll(event);
   }
 
   // ACTIONS
-  scroll(scrollTo) {
+  scroll({ url }) {
+    const scrollTo = '#' + _.last(url.split('/'));
+
     let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, scrollTo);
     this.pageScrollService.start(pageScrollInstance);
   }
