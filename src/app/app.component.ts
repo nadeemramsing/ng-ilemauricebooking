@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
   <router-outlet></router-outlet>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  title: String = 'Ile Maurice Booking';
-}
+export class AppComponent { }
