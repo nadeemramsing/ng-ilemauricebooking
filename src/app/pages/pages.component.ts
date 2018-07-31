@@ -9,11 +9,8 @@ import { MENU_ITEMS } from './pages-menu';
 
 @Component({
   selector: 'app-pages',
-  template: `
-    <app-navbar></app-navbar>
-    <app-home id="home"></app-home>
-    <app-about id="about"></app-about>
-  `,
+  templateUrl: 'pages.component.html',
+  styleUrls: ['pages.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
