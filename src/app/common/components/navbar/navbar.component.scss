@@ -5,3 +5,19 @@
   height: 5rem;
   padding: 1rem;
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  
+  display: block;
+  font-weight: 500;
+}
+
+.active {
+  @extend .bold;
+}
+
+button {
+  padding: 0;
+}

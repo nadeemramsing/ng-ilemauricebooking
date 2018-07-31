@@ -15,4 +15,4 @@ import { COMMON_COMPONENTS } from './components/export';
     ...COMMON_MODULES
   ]
 })
-export class CommonModule { }
+export class CommonModules { }

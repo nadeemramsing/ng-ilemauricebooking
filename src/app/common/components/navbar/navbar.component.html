@@ -1,5 +1,13 @@
-<div id="navbar-container" class="bold" fxLayoutGap="1rem" fxLayoutAlign="end center">
-  <span>Home</span>
-  <span>Properties</span>
-  <span>About Us</span>
+<div id="navbar-container" fxLayoutGap="1rem" fxLayoutAlign="end center">
+  <button mat-button>
+    <a [routerLink]="'/home'" routerLinkActive="active">Home</a>
+  </button>
+  
+  <button mat-button>
+    <a [routerLink]="'/properties'" routerLinkActive="active">Properties</a>
+  </button>
+
+  <button mat-button>
+    <a [routerLink]="'/about'" routerLinkActive="active">About Us</a>
+  </button>
 </div>
