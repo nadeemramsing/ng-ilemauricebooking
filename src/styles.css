@@ -17,8 +17,15 @@
 
 html {
   font-family: 'roboto-light';
+  font-size: 14px;
 }
 
 body {
   margin: 0;
+}
+
+/* General rules */
+
+.bold {
+  font-weight: 700;
 }
