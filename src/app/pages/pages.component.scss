@@ -1,3 +1,11 @@
+@import './../common/styles/global-variables.scss';
+  
+#pages-container {
+  height: calc(100vh - #{$height_navbar});
+  overflow: auto;  
+}
+  
 .section-container {
-  height: calc(100vh - 5rem); 
+  height: calc(100vh - #{$height_navbar}); 
+  color: white;
 }
