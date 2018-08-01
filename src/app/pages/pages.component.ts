@@ -80,6 +80,14 @@ export class PagesComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onPageScrollFinish() {
+    this.showArrows = true;
+    this.ref.detectChanges();
+
+    const url = pages[this.currentPageIndex].replace('#', '');
+    this.router.navigate([url]);
+  }
+
   // ACTIONS
   scrollPrevious() {
     this.currentPageIndex = Math.max(--this.currentPageIndex, 0);
@@ -101,7 +109,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
     this.showArrows = false;
 
     const onPageScrollFinish = new EventEmitter<boolean>();
-    onPageScrollFinish.subscribe(() => (this.showArrows = true, this.ref.detectChanges()));
+    onPageScrollFinish.subscribe(() => this.onPageScrollFinish());
 
     let pageScrollInstance: PageScrollInstance = PageScrollInstance.newInstance({
       document: this.document,
