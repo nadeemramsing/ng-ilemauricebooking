@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
+import { PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
 import * as _ from 'lodash';
 
 import { MENU_ITEMS } from './pages-menu';
@@ -25,11 +25,7 @@ export class PagesComponent implements OnInit, AfterViewInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private pageScrollService: PageScrollService
-  ) {
-    PageScrollConfig.defaultDuration = 400;
-    // 1 rem = 14px (defined in styles.scss)
-    PageScrollConfig.defaultScrollOffset = 14 * 5;
-  }
+  ) { }
 
   // LIFECYCLE HOOKS
   ngOnInit() { }

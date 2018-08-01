@@ -2,7 +2,7 @@
   
 #pages-container {
   height: calc(100vh - #{$height_navbar});
-  overflow: auto;  
+  overflow: hidden;  
 }
   
 .section-container {
