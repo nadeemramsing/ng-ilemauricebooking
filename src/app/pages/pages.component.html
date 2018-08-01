@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div #container id="pages-container">
+<div #container id="pages-container" (mousewheel)="onMouseWheel($event)">
   <app-home id="home"></app-home>
   <app-about id="about"></app-about>
 </div>

@@ -52,15 +52,34 @@ export class PagesComponent implements OnInit, AfterViewInit {
 
   onArrowClick(type) {
     switch (type) {
-      case 'up': this.currentPageIndex = Math.max(--this.currentPageIndex, 0); break;
-      case 'down': this.currentPageIndex = Math.min(pages.length - 1, ++this.currentPageIndex); break;
+      case 'up': this.scrollPrevious(); break;
+      case 'down': this.scrollNext(); break;
     }
+  }
 
+  onMouseWheel({ wheelDeltaY }) {
+    switch (true) {
+      case wheelDeltaY > 0 && this.currentPageIndex !== 0: this.scrollPrevious(); break;
+      case wheelDeltaY < 0 && this.currentPageIndex !== this.lastPageIndex: this.scrollNext(); break;
+    }
+  }
+
+  // ACTIONS
+  scrollPrevious() {
+    this.currentPageIndex = Math.max(--this.currentPageIndex, 0);
+    this.getScrollTargetAndScroll();
+  }
+
+  scrollNext() {
+    this.currentPageIndex = Math.min(pages.length - 1, ++this.currentPageIndex);
+    this.getScrollTargetAndScroll();
+  }
+
+  getScrollTargetAndScroll() {
     const scrollTarget = pages[this.currentPageIndex];
     this.scroll(scrollTarget);
   }
 
-  // ACTIONS
   scroll(scrollTarget) {
     let pageScrollInstance: PageScrollInstance = PageScrollInstance.newInstance({
       document: this.document,
