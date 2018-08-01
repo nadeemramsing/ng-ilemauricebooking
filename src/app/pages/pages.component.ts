@@ -27,6 +27,8 @@ export class PagesComponent implements OnInit, AfterViewInit {
     private pageScrollService: PageScrollService
   ) {
     PageScrollConfig.defaultDuration = 400;
+    // 1 rem = 14px (defined in styles.scss)
+    PageScrollConfig.defaultScrollOffset = 14 * 5;
   }
 
   // LIFECYCLE HOOKS
