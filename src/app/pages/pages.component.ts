@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
+import { TakeUntilDestroy, untilDestroyed } from 'ngx-take-until-destroy';
 import * as _ from 'lodash';
 
 import { MENU_ITEMS } from './pages-menu';
@@ -15,6 +16,7 @@ const pages = [
   '#about'
 ];
 
+@TakeUntilDestroy()
 @Component({
   selector: 'app-pages',
   templateUrl: 'pages.component.html',
@@ -46,11 +48,14 @@ export class PagesComponent implements OnInit, AfterViewInit {
     this.mousewheel$ = fromEvent(this.container.nativeElement, 'mousewheel');
     this.mousewheel$
       .pipe(throttleTime(1000))
+      .pipe(untilDestroyed(this))
       .subscribe(event => this.onMouseWheel(event));
   }
 
   ngAfterViewInit() {
-    this.router.events.subscribe(event => event['changeRoute'] && this.onRouteChange(event));
+    this.router.events
+      .pipe(untilDestroyed(this))
+      .subscribe(event => event['changeRoute'] && this.onRouteChange(event));
   }
 
   // LISTENERS

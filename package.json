@@ -27,6 +27,7 @@
     "core-js": "^2.5.4",
     "lodash": "^4.17.10",
     "ngx-page-scroll": "^5.0.0",
+    "ngx-take-until-destroy": "^3.0.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
