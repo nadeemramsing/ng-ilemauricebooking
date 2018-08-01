@@ -28,7 +28,5 @@ export class PagesModule {
   // Config
   constructor(
     private defaultPageScrollConfig: DefaultPageScrollConfig
-  ) {
-    this.defaultPageScrollConfig.setDefaultConfig();
-  }
+  ) { }
 }
