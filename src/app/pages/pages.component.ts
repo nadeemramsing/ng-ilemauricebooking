@@ -23,9 +23,9 @@ const pages = [
 export class PagesComponent implements OnInit, AfterViewInit {
   @ViewChild('container') container: ElementRef;
 
+  public currentPageIndex: number = 0;
+  public lastPageIndex: Number = pages.length - 1;
   public menu = MENU_ITEMS;
-
-  private currentPageIndex: number = 0;
 
   constructor(
     @Inject(DOCUMENT) private document,
