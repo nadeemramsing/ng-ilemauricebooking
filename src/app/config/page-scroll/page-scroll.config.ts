@@ -1,4 +1,5 @@
 import { PageScrollConfig } from 'ngx-page-scroll';
+import * as ease from './ease';
 
 export class DefaultPageScrollConfig {
   constructor() {
@@ -6,19 +7,12 @@ export class DefaultPageScrollConfig {
   }
 
   setDefaultConfig() {
-    PageScrollConfig.defaultDuration = 600;
+    PageScrollConfig.defaultDuration = 1000;
     // 1 rem = 14px (defined in styles.scss)
     PageScrollConfig.defaultScrollOffset = 14 * 5;
     PageScrollConfig.defaultInterruptible = false;
     PageScrollConfig.defaultEasingLogic = {
-      'ease': (t: number, b: number, c: number, d: number): number => {
-        // From https://github.com/Nolanus/ngx-page-scroll
-        // easeInOutExpo easing
-        if (t === 0) return b;
-        if (t === d) return b + c;
-        if ((t /= d / 2) < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-        return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
-      }
+      'ease': ease.easeInOutExpo
     };
   }
 

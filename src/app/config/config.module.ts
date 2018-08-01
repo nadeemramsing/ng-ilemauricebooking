@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DefaultPageScrollConfig } from './page-scroll.config';
+import { DefaultPageScrollConfig } from './page-scroll/page-scroll.config';
 
 @NgModule({
   providers: [
