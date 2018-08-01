@@ -5,10 +5,10 @@
   <app-about id="about"></app-about>
 </div>
 
-<div class="arrow-container arrow-up-container">
+<div class="arrow-container arrow-up-container" (click)="onArrowClick('up')">
   <img class="arrow" src="assets/icons/navigation/up.png" alt="up.png">
 </div>
 
-<div class="arrow-container arrow-down-container">
+<div class="arrow-container arrow-down-container" (click)="onArrowClick('down')">
   <img class="arrow" src="assets/icons/navigation/down.png" alt="down.png">
 </div>

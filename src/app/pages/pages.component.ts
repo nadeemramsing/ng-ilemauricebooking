@@ -7,6 +7,12 @@ import * as _ from 'lodash';
 
 import { MENU_ITEMS } from './pages-menu';
 
+// NON-COMPONENT VARIABLES
+const pages = [
+  '#home',
+  '#about'
+];
+
 @Component({
   selector: 'app-pages',
   templateUrl: 'pages.component.html',
@@ -18,6 +24,8 @@ export class PagesComponent implements OnInit, AfterViewInit {
   @ViewChild('container') container: ElementRef;
 
   public menu = MENU_ITEMS;
+
+  private currentPageIndex: number = 0;
 
   constructor(
     @Inject(DOCUMENT) private document,
@@ -36,13 +44,22 @@ export class PagesComponent implements OnInit, AfterViewInit {
 
   // LISTENERS
   onRouteChange(event) {
-    this.scroll(event);
+    const scrollTarget = getScrollTarget(event);
+    this.scroll(scrollTarget);
+  }
+
+  onArrowClick(type) {
+    switch(type) {
+      case 'up': this.currentPageIndex = Math.max(--this.currentPageIndex, 0); break;
+      case 'down': this.currentPageIndex = Math.min(pages.length - 1, ++this.currentPageIndex); break;
+    }
+
+    const scrollTarget = pages[this.currentPageIndex];
+    this.scroll(scrollTarget);
   }
 
   // ACTIONS
-  scroll({ url }) {
-    const scrollTarget = '#' + _.last(url.split('/'));
-
+  scroll(scrollTarget) {
     let pageScrollInstance: PageScrollInstance = PageScrollInstance.newInstance({
       document: this.document,
       scrollTarget,
@@ -50,4 +67,10 @@ export class PagesComponent implements OnInit, AfterViewInit {
     });
     this.pageScrollService.start(pageScrollInstance);
   }
+}
+
+// NON-COMPONENT HELPER FUNCTIONS
+// scroll
+function getScrollTarget({ url }) {
+  return '#' + _.last(url.split('/'));
 }
