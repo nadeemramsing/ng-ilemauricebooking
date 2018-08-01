@@ -9,3 +9,21 @@
   height: calc(100vh - #{$height_navbar}); 
   color: white;
 }
+
+.arrow-container {
+  position: fixed;
+  right: calc(50% - #{$height_navbar / 2});
+}
+
+.arrow-up-container {
+  top: $height_navbar;
+}
+
+.arrow-down-container {
+  bottom: 0;
+}
+
+.arrow {
+  height: $size_navarrow;
+  width: auto;
+}
