@@ -1,7 +1,9 @@
-import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, Inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, Inject, ViewChild, ElementRef, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Observable, fromEvent } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
 import { PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
 import * as _ from 'lodash';
 
@@ -26,17 +28,26 @@ export class PagesComponent implements OnInit, AfterViewInit {
   public currentPageIndex: number = 0;
   public lastPageIndex: Number = pages.length - 1;
   public menu = MENU_ITEMS;
+  public showArrows = true;
+
+  private mousewheel$: Observable<Event>;
 
   constructor(
     @Inject(DOCUMENT) private document,
 
     private activatedRoute: ActivatedRoute,
+    private ref: ChangeDetectorRef,
     private router: Router,
     private pageScrollService: PageScrollService
   ) { }
 
   // LIFECYCLE HOOKS
-  ngOnInit() { }
+  ngOnInit() {
+    this.mousewheel$ = fromEvent(this.container.nativeElement, 'mousewheel');
+    this.mousewheel$
+      .pipe(throttleTime(1000))
+      .subscribe(event => this.onMouseWheel(event));
+  }
 
   ngAfterViewInit() {
     this.router.events.subscribe(event => event['changeRoute'] && this.onRouteChange(event));
@@ -57,10 +68,10 @@ export class PagesComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onMouseWheel({ wheelDeltaY }) {
+  onMouseWheel(event) {
     switch (true) {
-      case wheelDeltaY > 0 && this.currentPageIndex !== 0: this.scrollPrevious(); break;
-      case wheelDeltaY < 0 && this.currentPageIndex !== this.lastPageIndex: this.scrollNext(); break;
+      case event.wheelDeltaY > 0 && this.currentPageIndex !== 0: this.scrollPrevious(); break;
+      case event.wheelDeltaY < 0 && this.currentPageIndex !== this.lastPageIndex: this.scrollNext(); break;
     }
   }
 
@@ -78,14 +89,22 @@ export class PagesComponent implements OnInit, AfterViewInit {
   getScrollTargetAndScroll() {
     const scrollTarget = pages[this.currentPageIndex];
     this.scroll(scrollTarget);
+    this.ref.detectChanges();
   }
 
   scroll(scrollTarget) {
+    this.showArrows = false;
+
+    const onPageScrollFinish = new EventEmitter<boolean>();
+    onPageScrollFinish.subscribe(() => (this.showArrows = true, this.ref.detectChanges()));
+
     let pageScrollInstance: PageScrollInstance = PageScrollInstance.newInstance({
       document: this.document,
       scrollTarget,
-      scrollingViews: [this.container.nativeElement]
+      scrollingViews: [this.container.nativeElement],
+      pageScrollFinishListener: onPageScrollFinish
     });
+
     this.pageScrollService.start(pageScrollInstance);
   }
 }
