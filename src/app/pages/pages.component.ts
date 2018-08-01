@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, Inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
@@ -15,6 +15,8 @@ import { MENU_ITEMS } from './pages-menu';
 })
 
 export class PagesComponent implements OnInit, AfterViewInit {
+  @ViewChild('container') container: ElementRef;
+
   public menu = MENU_ITEMS;
 
   constructor(
@@ -41,9 +43,13 @@ export class PagesComponent implements OnInit, AfterViewInit {
 
   // ACTIONS
   scroll({ url }) {
-    const scrollTo = '#' + _.last(url.split('/'));
+    const scrollTarget = '#' + _.last(url.split('/'));
 
-    let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, scrollTo);
+    let pageScrollInstance: PageScrollInstance = PageScrollInstance.newInstance({
+      document: this.document,
+      scrollTarget,
+      scrollingViews: [this.container.nativeElement]
+    });
     this.pageScrollService.start(pageScrollInstance);
   }
 }
