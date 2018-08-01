@@ -13,6 +13,7 @@
 .arrow-container {
   position: fixed;
   right: calc(50% - #{$height_navbar / 2});
+  padding: 1rem;
 }
 
 .arrow-up-container {
