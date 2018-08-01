@@ -45,11 +45,13 @@ export class PagesComponent implements OnInit, AfterViewInit {
   // LISTENERS
   onRouteChange(event) {
     const scrollTarget = getScrollTarget(event);
+
+    this.currentPageIndex = pages.indexOf(scrollTarget);
     this.scroll(scrollTarget);
   }
 
   onArrowClick(type) {
-    switch(type) {
+    switch (type) {
       case 'up': this.currentPageIndex = Math.max(--this.currentPageIndex, 0); break;
       case 'down': this.currentPageIndex = Math.min(pages.length - 1, ++this.currentPageIndex); break;
     }
