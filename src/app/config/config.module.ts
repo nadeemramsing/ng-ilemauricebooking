@@ -6,4 +6,4 @@ import { DefaultPageScrollConfig } from './page-scroll/page-scroll.config';
     DefaultPageScrollConfig
   ]
 })
-export class ConfigModule {}
+export class ConfigModule { }

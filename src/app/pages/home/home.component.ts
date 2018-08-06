@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+import { CitiesAPI } from './../../common/services/api/cities.api.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,8 +15,12 @@ import { FormControl } from '@angular/forms';
 export class HomeComponent implements OnInit {
   public stateCtrl = new FormControl();
 
-  constructor() { }
+  constructor(
+    private citiesAPI: CitiesAPI
+  ) { }
 
-  ngOnInit() { }
+  async ngOnInit() {
+    const cities = await this.citiesAPI.getCities().toPromise();
+  }
 
 }
