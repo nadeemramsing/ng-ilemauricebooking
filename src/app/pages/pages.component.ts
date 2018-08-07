@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit, Inject, ViewChild, ElementRef, ChangeDetectorRef, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, AfterViewInit, Inject, ViewChild, ElementRef, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -24,7 +24,7 @@ const pages = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class PagesComponent implements OnInit, AfterViewInit {
+export class PagesComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('container') container: ElementRef;
 
   public currentPageIndex: number = 0;
@@ -56,6 +56,10 @@ export class PagesComponent implements OnInit, AfterViewInit {
     this.router.events
       .pipe(untilDestroyed(this))
       .subscribe(event => event['changeRoute'] && this.onRouteChange(event));
+  }
+
+  ngOnDestroy() {
+    
   }
 
   // LISTENERS
