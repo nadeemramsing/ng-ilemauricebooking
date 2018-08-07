@@ -12,12 +12,16 @@ export class CitiesAPI {
     private http: HttpClient
   ) { }
 
-  public getCities(): Observable<any> {
+  public getPlaces(name?: String): Observable<any> {
+    let nameCriteria = "";
+
+    name && (nameCriteria = `["name"~"${name}", i]`);
+
     const overpassQuery =
       [
-        `[out:json][timeout:60];`,
-        `area["boundary"~"administrative"]["name"~"Berlin"];`,
-        `node(area)["amenity"~"school"];`,
+        `[out:json];`,
+        `area["name"="Mauritius"]["type"="boundary"];`,
+        `node["place"~"city|town|village"]${nameCriteria}(area);`,
         `out;`
       ].join('');
 

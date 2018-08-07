@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    const cities = await this.citiesAPI.getCities().toPromise();
+    const cities = await this.citiesAPI.getPlaces('C').toPromise();
   }
 
 }
