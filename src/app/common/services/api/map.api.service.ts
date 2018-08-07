@@ -7,7 +7,7 @@ const OVERPASS_API = 'https://www.overpass-api.de/api/interpreter';
 @Injectable({
   providedIn: 'root'
 })
-export class CitiesAPI {
+export class MapAPI {
   constructor(
     private http: HttpClient
   ) { }
