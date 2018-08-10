@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setNewPlaces$('');
+
   }
 
   setNewPlaces$(place: String = '') {
