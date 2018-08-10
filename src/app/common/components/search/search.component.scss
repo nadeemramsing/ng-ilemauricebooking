@@ -1,0 +1,7 @@
+@import './../../styles/global-variables.scss';
+  
+:host ::ng-deep {
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+      width: 75vw;
+  }
+}
