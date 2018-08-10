@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
@@ -20,6 +21,7 @@ export class SearchComponent implements OnInit {
   public placeFormControl = new FormControl();
 
   constructor(
+    private db: AngularFirestore,
     private mapAPI: MapAPI,
     private ref: ChangeDetectorRef
   ) {
@@ -29,7 +31,8 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    const test$ = this.db.collection('test').valueChanges();
+    test$.subscribe(v => console.log(v));
   }
 
   setNewPlaces$(place: String = '') {
