@@ -1,15 +1,5 @@
 <div id="home-container" class="section-container">
   Home
 
-  <form>
-    <mat-form-field>
-      <input matInput placeholder="Place" aria-label="Place" [matAutocomplete]="auto" [formControl]="placeFormControl">
-
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let place of places$ | async" [value]="place.tags.name">
-          <span>{{place.tags.name}}</span>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
+  <app-search></app-search>
 </div>
