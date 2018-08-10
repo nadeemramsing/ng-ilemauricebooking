@@ -1,6 +1,7 @@
 import {
     MatAutocompleteModule,
     MatButtonModule,
+    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule
@@ -9,6 +10,7 @@ import {
 export const COMMON_MATERIAL_MODULES = [
     MatAutocompleteModule,
     MatButtonModule,
+    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule
