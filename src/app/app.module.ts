@@ -26,13 +26,14 @@ import { environment } from '../environments/environment';
     AppComponent
   ],
   imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    RouterModule.forRoot(routes, { useHash: true }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule, 
     AngularFireStorageModule,
     AngularFirestoreModule,
+    
+    BrowserAnimationsModule,
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true }),
     
     // user-defined
     PagesModule,

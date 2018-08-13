@@ -40,7 +40,8 @@ export class SearchComponent implements OnInit {
       .getPlaces(place)
       .pipe(map(v => _.chain(v.elements)
         .sortBy('tags.name')
-        .sortedUniqBy(v => v.tags.name)
+        .sortedUniqBy(element => element.tags.name)
+        .thru(elements => elements.length ? elements : [{ tags: { name: `No "${place}" found.` }, notFound: true }])
         .value()
       ));
 
