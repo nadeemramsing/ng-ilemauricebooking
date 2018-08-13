@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+<div #container id="pages-container">
+  <app-home id="home"></app-home>
+  <app-about id="about"></app-about>
+</div>
+
+<div [hidden]="!showArrows">
+  <div class="arrow-container arrow-up-container" (click)="onArrowClick('up')" [hidden]="currentPageIndex === 0">
+    <img class="arrow" src="assets/icons/navigation/up.png" alt="up.png">
+  </div>
+
+  <div class="arrow-container arrow-down-container" (click)="onArrowClick('down')" [hidden]="currentPageIndex === lastPageIndex">
+    <img class="arrow" src="assets/icons/navigation/down.png" alt="down.png">
+  </div>
+</div>

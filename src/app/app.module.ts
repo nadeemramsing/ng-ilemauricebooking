@@ -1,51 +1,42 @@
-//modules
+// modules
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MaterialModule } from './material-module';
+import { RouterModule } from '@angular/router';
 
-//components
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
+// user-defined
+import { PagesModule } from './pages/pages.module';
+
+// components
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MaterialTableComponent } from './material-table/material-table.component';
-import { NavbarComponent } from './navbar/navbar.component';
 
-//routing
-import { routes } from './/routing.module';
+// routing
+import { routes } from './app-routing.module';
+
+// config
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    DashboardComponent,
-    MaterialTableComponent,
+    AppComponent
   ],
   imports: [
-    BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule, 
+    AngularFireStorageModule,
+    AngularFirestoreModule,
+    
     BrowserAnimationsModule,
-    LayoutModule,
-    MaterialModule,
-    RouterModule.forRoot(routes, { useHash: true })
-    //hashtag symbol appears
-    //From what I understand, 
-
-    //useHash: true => HashLocationStrategy used (https://angular.io/api/common/HashLocationStrategy)
-    //location.go('/foo') => url becomes example.com/#/foo (i.e. prefix dismissed)
-    //used in AngularJS by default?
-
-    //useHash: false => PathLocationStrategy used (https://angular.io/api/common/PathLocationStrategy)
-    //location.go('/foo') => url becomes example.com/my/app/base/href/foo (APP_BASE_HREF must be provided)
-
-    //How APP_BASE_HREF is provided globally:
-    /* @NgModule({
-      providers: [{provide: APP_BASE_HREF, useValue: '/my/app/base/href'}]
-    }) */
-
-    //individually using href
-    /* <a mat-list-item href="#" routerLink="/dashboard" (click)="drawer.toggle()">Dashboard</a> */
-
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+    
+    // user-defined
+    PagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+  <router-outlet></router-outlet>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  title: String = 'Angular 6 Material Starter';
+  constructor(){
+    history.scrollRestoration = 'manual';
+  }
 }
