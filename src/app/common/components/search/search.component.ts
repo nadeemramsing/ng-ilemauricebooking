@@ -19,17 +19,19 @@ export class SearchComponent implements OnInit {
   public places$: Observable<any>;
   public placeFormControl = new FormControl();
 
+  private selectedPlace;
+
   constructor(
     private mapAPI: MapAPI,
     private ref: ChangeDetectorRef
   ) {
     this.placeFormControl.valueChanges
       .pipe(debounceTime(500))
-      .subscribe(v => this.setNewPlaces$(v));
+      .subscribe(v => v !== this.selectedPlace && this.setNewPlaces$(v));
   }
 
   ngOnInit() {
-    
+
   }
 
   setNewPlaces$(place: String = '') {
@@ -43,6 +45,10 @@ export class SearchComponent implements OnInit {
       ));
 
     this.ref.detectChanges();
+  }
+
+  optionSelected($event) {
+    this.selectedPlace = $event.option.value;
   }
 
 }

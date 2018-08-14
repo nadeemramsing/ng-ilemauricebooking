@@ -3,7 +3,7 @@
     <mat-form-field>
       <input matInput placeholder="Place" aria-label="Place" [matAutocomplete]="auto" [formControl]="placeFormControl">
 
-      <mat-autocomplete #auto="matAutocomplete" class="autocomplete-panel">
+      <mat-autocomplete #auto="matAutocomplete" class="autocomplete-panel" (optionSelected)="optionSelected($event)">
         <mat-option *ngFor="let place of places$ | async" [value]="place.tags.name" [disabled]="place.notFound">
           <span>{{place.tags.name}}</span>
         </mat-option>
